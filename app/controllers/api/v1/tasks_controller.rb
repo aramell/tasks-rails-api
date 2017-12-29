@@ -5,6 +5,7 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def create
+    # binding.pry
     @task = Task.create(task_params)
     render json: @task, status: 201
   end
@@ -25,7 +26,8 @@ class Api::V1::TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:body)
+      # binding.pry
+      params.require(:task).permit(:name)
     end
 
 
