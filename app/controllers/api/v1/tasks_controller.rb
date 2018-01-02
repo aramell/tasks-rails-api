@@ -5,13 +5,12 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def create
-    # binding.pry
     @task = Task.create(task_params)
     render json: @task, status: 201
   end
 
   def destroy
-    task = Tark.find(params[:id])
+    task = Task.find(params[:id])
     if task.destroy
       render json: {taskId: task.id}, status: 200
     end
@@ -26,7 +25,6 @@ class Api::V1::TasksController < ApplicationController
 
   private
     def task_params
-      # binding.pry
       params.require(:task).permit(:name)
     end
 
